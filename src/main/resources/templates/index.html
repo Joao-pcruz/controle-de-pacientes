@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <title>Sistema para Controle de Paciente</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+ 
+</head>
+
+<header>
+	  	<nav>
+    		<div class="nav-wrapper">
+      			<a class="brand-logo center">CONTROLE DE PACIENTES</a>
+      			<ul id="nav-mobile" class="left hide-on-med-and-down">        		
+      			</ul>
+    		</div>
+  		</nav>
+	</header>
+
+<body>    
+       <div class="container">			
+    			<h3>&nbsp&nbsp<a href="/cadastro" class="waves-effect waves-light btn-small"><i class="material-icons right">add_circle_outline</i>Cadastrar novo paciente</a>
+    
+    			&nbsp&nbsp<a href="/lista" class="waves-effect waves-light btn-small">Listar pacientes</a></h3><br>
+   		</div>
+       
+        <nav>
+    		<div class="nav-wrapper">
+      			<a class="brand-logo center">PACIENTES CADASTRADOS</a>
+      			<ul id="nav-mobile" class="left hide-on-med-and-down">        		
+      			</ul>
+    		</div>
+  		</nav>    
+   
+    <table class="responsive-table">
+    		<thead>
+    			<tr>
+    				<th>Nome</th> 
+    				<th>CPF</th>    				
+    				<th>Contato</th>
+    				<th>E-mail</th> 
+    				<th>Endereço</th> 
+    				<th>Número</th>
+    				<th>Cidade</th>  
+    				<th>Estado</th>				
+    				<th>Nascimento</th>
+    				<th>Deletar</th>
+    			</tr>
+    		</thead>
+    	<tbody>
+    		<tr th:each="cadastro : ${listagem}">  	    			
+    			&nbsp<td><span th:text="${cadastro.nome}"></span></td>
+    			<td><span th:text="${cadastro.cpf}"></span></td>
+    			<td><span th:text="${cadastro.contato}"></span></td>
+    			<td><span th:text="${cadastro.email}"></span></td>
+    			<td><span th:text="${cadastro.endereco}"></span></td>
+    			<td><span th:text="${cadastro.numero}"></span></td>
+    			<td><span th:text="${cadastro.cidade}"></span></td>
+    			<td><span th:text="${cadastro.estado}"></span></td>
+    			<td><span th:text="${cadastro.nascimento}"></span></p>
+    			<td><a class="waves-effect waves-light btn-small" th:href="${(#mvc.url('CC#deletarPaciente').arg(0, cadastro.id)).build()}"><i class="tiny material-icons">delete_forever</i></a></td>
+    		</tr>   
+    	</tbody>	 		
+    </table> 
+        
+   
+  	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+    
+        	
+</body>
+</html>
